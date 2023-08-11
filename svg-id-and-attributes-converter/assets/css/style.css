@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
@@ -23,8 +23,12 @@ body {
 
 h2 {
     margin-top: 0;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     font-size: 36px;
+}
+
+p {
+    margin-bottom: 20px;
 }
 
 form {
@@ -32,7 +36,7 @@ form {
 }
 
 label {
-    font-weight: 400;
+    font-weight: 500;
 }
 
 textarea,
@@ -47,6 +51,7 @@ input[type="text"] {
 
 button {
     background-color: #1837e6;
+    font-weight: 500;
     color: white;
     border: none;
     padding: 10px 20px;
