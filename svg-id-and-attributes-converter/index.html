@@ -11,9 +11,10 @@
     </head>
     <style>
         body {
-            font-family: "Open Sans", Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            font-size: 16px;
         }
 
         .container {
@@ -23,6 +24,7 @@
             background-color: #f5f5f5;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
         }
 
         * {
@@ -33,6 +35,8 @@
 
         h2 {
             margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 36px;
         }
 
         form {
@@ -54,7 +58,7 @@
         }
 
         button {
-            background-color: #546f31;
+            background-color: #1837e6;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -63,15 +67,15 @@
         }
 
         button:hover {
-            background-color: #425e28;
+            background-color: #1a31b3;
         }
 
         #output {
             resize: vertical;
         }
 
-        .copy-button {
-            background-color: #546f31;
+        .copy-vbutton {
+            background-color: #1837e6;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -79,9 +83,17 @@
             cursor: pointer;
             margin-top: 10px;
         }
-
-        .copy-button:hover {
-            background-color: #425e28;
+        .diff-img{
+            width: 100%;
+            max-width: 1200px;
+            margin-inline:auto ;
+            display: block;
+            margin-block: 100px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .copy-vbutton:hover {
+            background-color: #1a31b3;
         }
     </style>
     <body>
@@ -99,8 +111,10 @@
             <br />
             <label for="output">Converted SVG code:</label><br />
             <textarea id="output" rows="10" cols="50"></textarea>
-            <button class="copy-button" id="copyButton">Copy Output</button>
+            <button class="copy-vbutton" id="copyButton">Copy Output</button>
+
         </div>
+        <img class="diff-img" src="computed-diff-diff-checker.png" alt="computed-diff-diff-checker">
 
         <script>
             $(document).ready(function () {
