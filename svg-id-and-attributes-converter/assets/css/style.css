@@ -37,13 +37,15 @@ form {
 
 label {
     font-weight: 500;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
 textarea,
 input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin: 5px 0;
+    /* margin: 5px 0; */
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 16px;
@@ -54,7 +56,7 @@ button {
     font-weight: 500;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 13px 20px;
     border-radius: 3px;
     cursor: pointer;
 }
@@ -71,7 +73,7 @@ button:hover {
     background-color: #1837e6;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 13px 20px;
     border-radius: 3px;
     cursor: pointer;
     margin-top: 10px;
@@ -87,4 +89,28 @@ button:hover {
 }
 .copy-vbutton:hover {
     background-color: #1a31b3;
+}
+
+.svgInput-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.svgInput-flex-item:first-child {
+    flex: 1;
+}
+.reset-button {
+    /* red background css add */
+    background-color: #e61717;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.reset-button:hover {
+    background-color: #b30f0f;
 }

@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <title>SVG ID and Attributes Converter</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
-    </head>
-    <body>
-        <div class="container">
-            <h2>SVG ID and Attributes Converter</h2>
-            <p>This HTML page is an "SVG ID and Attributes Converter." You can use it to change SVG code. Provide the original SVG code and text for the clip-path attribute. When you click "Convert IDs and Attributes," the code replaces IDs and modifies clip-path with the entered text. The modified SVG code appears in the output textarea. Also, use the "Copy Output" button to copy the modified SVG code to your clipboard.</p>
-            <form>
-                <label for="svgInput">Paste your SVG code:</label><br />
-                <textarea id="svgInput" rows="10" cols="50"></textarea><br />
-                <br />
-                <label for="newText">Enter text for clip-path:</label>
-                <input type="text" id="newText" /><br />
-                <br />
-                <button id="convertButton" type="button">Convert IDs and Attributes</button>
-            </form>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>SVG ID and Attributes Converter</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>SVG ID and Attributes Converter</h2>
+        <p>This HTML page is an "SVG ID and Attributes Converter." You can use it to change SVG code. Provide the original SVG code and text for the clip-path attribute. When you click "Convert IDs and Attributes," the code replaces IDs and modifies clip-path with the entered text. The modified SVG code appears in the output textarea. Also, use the "Copy Output" button to copy the modified SVG code to your clipboard.</p>
+        <form>
+            <label for="svgInput">Paste your SVG code:</label><br />
+            <textarea id="svgInput" rows="10" cols="50"></textarea><br />
             <br />
-            <label for="output">Converted SVG code:</label><br />
-            <textarea id="output" rows="10" cols="50"></textarea>
-            <button class="copy-vbutton" id="copyButton">Copy Output</button>
-
-        </div>
-        <a data-fancybox href="assets/images/computed-diff-diff-checker.png"><img loading="lazy" class="diff-img" src="assets/images/computed-diff-diff-checker.png" alt="computed-diff-diff-checker"></a>
-        <a data-fancybox href="assets/images/computed-diff-diff-checker-2.png"><img loading="lazy" class="diff-img" src="assets/images/computed-diff-diff-checker-2.png" alt="computed-diff-diff-checker"></a>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="assets/js/script.js"></script>
-    </body>
+            <div class="svgInput-flex">
+                <div class="svgInput-flex-item">
+                    <label for="newText">Enter text for clip-path & ID:</label>
+                    <input type="text" id="newText" />
+                </div>
+                <div class="svgInput-flex-item">
+                    <button id="convertButton" type="button">Convert IDs and Attributes</button>
+                </div>
+                <div class="svgInput-flex-item">
+                    <button class="reset-button" type="button" id="resetButton">Reset</button>
+                </div>
+            </div>
+        </form>
+        <br />
+        <label for="output">Converted SVG code:</label><br />
+        <textarea id="output" rows="10" cols="50"></textarea>
+        <button class="copy-vbutton" id="copyButton">Copy Output</button>
+    </div>
+    <a data-fancybox href="assets/images/computed-diff-diff-checker.png"><img loading="lazy" class="diff-img" src="assets/images/computed-diff-diff-checker.png" alt="computed-diff-diff-checker"></a>
+    <a data-fancybox href="assets/images/computed-diff-diff-checker-2.png"><img loading="lazy" class="diff-img" src="assets/images/computed-diff-diff-checker-2.png" alt="computed-diff-diff-checker"></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/script.js"></script>
+</body>
 </html>
