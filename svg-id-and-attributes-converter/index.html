@@ -3,100 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>SVG ID and Attributes Converter</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
     </head>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 30px;
-            font-size: 36px;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: 400;
-        }
-
-        textarea,
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            font-size: 16px;
-        }
-
-        button {
-            background-color: #1837e6;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #1a31b3;
-        }
-
-        #output {
-            resize: vertical;
-        }
-
-        .copy-vbutton {
-            background-color: #1837e6;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .diff-img{
-            width: 100%;
-            max-width: 1200px;
-            margin-inline:auto ;
-            display: block;
-            margin-block: 100px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-        }
-        .copy-vbutton:hover {
-            background-color: #1a31b3;
-        }
-    </style>
     <body>
         <div class="container">
             <h2>SVG ID and Attributes Converter</h2>
@@ -115,52 +29,10 @@
             <button class="copy-vbutton" id="copyButton">Copy Output</button>
 
         </div>
-        <a data-fancybox href="computed-diff-diff-checker.png"><img class="diff-img" src="computed-diff-diff-checker.png" alt="computed-diff-diff-checker"></a>
-
+        <a data-fancybox href="assets/images/computed-diff-diff-checker.png"><img loading="lazy" class="diff-img" src="assets/images/computed-diff-diff-checker.png" alt="computed-diff-diff-checker"></a>
+        <a data-fancybox href="assets/images/computed-diff-diff-checker-2.png"><img loading="lazy" class="diff-img" src="assets/images/computed-diff-diff-checker-2.png" alt="computed-diff-diff-checker"></a>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-        <script>
-            $(document).ready(function () {
-                $("#convertButton").click(function () {
-                    var inputSvg = $("#svgInput").val();
-                    var newText = $("#newText").val();
-                    var outputSvg = convertSvgIdsAndAttributes(inputSvg, newText);
-                    $("#output").val(outputSvg);
-                });
-
-                $("#copyButton").click(function () {
-                    copyToClipboard("#output");
-                });
-
-                function convertSvgIdsAndAttributes(svgCode, newText) {
-                    var parser = new DOMParser();
-                    var svgDoc = parser.parseFromString(svgCode, "image/svg+xml");
-                    var svgElements = $(svgDoc).find("[id]");
-
-                    svgElements.each(function (index, element) {
-                        var oldId = $(element).attr("id");
-                        var newId = newText + oldId;
-                        $(element).attr("id", newId);
-                    });
-
-                    var clipPathElements = $(svgDoc).find("[clip-path]");
-                    clipPathElements.each(function (index, element) {
-                        var oldClipPathValue = $(element).attr("clip-path");
-                        var newClipPathValue = oldClipPathValue.replace(/url\(#clip-path\)/g, "url(#" + newText + "clip-path)");
-                        $(element).attr("clip-path", newClipPathValue);
-                    });
-
-                    return svgDoc.documentElement.outerHTML;
-                }
-
-                function copyToClipboard(elementSelector) {
-                    var copyText = $(elementSelector)[0];
-                    copyText.select();
-                    document.execCommand("copy");
-                    alert("Copied the text: " + copyText.value);
-                }
-            });
-        </script>
+        <script src="assets/js/script.js"></script>
     </body>
 </html>
