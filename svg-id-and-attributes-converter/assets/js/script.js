@@ -7,7 +7,7 @@ $(document).ready(function () {
         $("#newText").val(""); // Clear new text input
         $("#output").val(""); // Clear output textarea
     });
-    
+
     $("#convertButton").click(function () {
         var inputSvg = $("#svgInput").val();
         var newText = $("#newText").val();
@@ -33,8 +33,17 @@ $(document).ready(function () {
         var clipPathElements = $(svgDoc).find("[clip-path]");
         clipPathElements.each(function (index, element) {
             var oldClipPathValue = $(element).attr("clip-path");
-            var newClipPathValue = oldClipPathValue.replace(/url\(#clip-path\)/g, "url(#" + newText + "clip-path)");
+            // Modify clip-path attribute value
+            var newClipPathValue = oldClipPathValue.replace(/url\(#clip-path(-\d*)?\)/g, "url(#" + newText + "clip-path$1)");
             $(element).attr("clip-path", newClipPathValue);
+        });
+
+        var fillElements = $(svgDoc).find("[fill^='url(#linear-gradient']");
+        fillElements.each(function (index, element) {
+            var oldFillValue = $(element).attr("fill");
+            // Modify fill attribute value
+            var newFillValue = oldFillValue.replace(/url\(#linear-gradient(-\d*)?\)/g, "url(#" + newText + "linear-gradient$1)");
+            $(element).attr("fill", newFillValue);
         });
 
         return svgDoc.documentElement.outerHTML;
