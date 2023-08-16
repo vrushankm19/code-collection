@@ -8,6 +8,9 @@ $(document).ready(function () {
 
     // Rest of your existing code
 
+    $("#svgInput").focus();
+
+
     $("#resetButton").click(function () {
         $("#svgInput").val(""); // Clear SVG input
         $("#newText").val(""); // Clear new text input
