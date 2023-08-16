@@ -26,7 +26,7 @@ $(document).ready(function () {
         var newText = $("#newText").val();
         var outputSvg = convertSvgIdsAndAttributes(inputSvg, newText);
         $("#output").val(outputSvg);
-        $("#copyButton").focus();
+        // $("#copyButton").focus();
         iziToast.success({
             title: 'Success',
             close: false,
