@@ -65,7 +65,9 @@ button {
     gap: 10px;
 }
 
-button:focus {
+button:focus,
+button:active,
+button:focus-visible {
     outline: inherit dashed 3px;
 }
 button:hover {
