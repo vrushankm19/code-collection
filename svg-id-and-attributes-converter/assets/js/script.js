@@ -14,6 +14,7 @@ $(document).ready(function () {
         $("#output").val(""); // Clear output textarea
         iziToast.info({
             title: 'Info',
+            close: false,
             message: 'Reset successfully!',
             position: 'topRight', // You can change the position of the toast
             timeout: 3000, // Toast will auto-hide after 3 seconds
@@ -27,6 +28,7 @@ $(document).ready(function () {
         $("#output").val(outputSvg);
         iziToast.success({
             title: 'Success',
+            close: false,
             message: 'Reset successfully!',
             position: 'topRight', // You can change the position of the toast
             timeout: 3000, // Toast will auto-hide after 3 seconds
@@ -69,6 +71,7 @@ $(document).ready(function () {
         // alert("Copied the text: " + copyText.value);
         iziToast.success({
             title: 'Success',
+            close: false,
             message: 'Copy Output successfully!',
             position: 'topRight', // You can change the position of the toast
             timeout: 3000, // Toast will auto-hide after 3 seconds
