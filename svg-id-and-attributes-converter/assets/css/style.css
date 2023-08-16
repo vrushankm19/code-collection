@@ -65,6 +65,9 @@ button {
     gap: 10px;
 }
 
+button:focus {
+    outline: inherit dashed 3px;
+}
 button:hover {
     background-color: #1a31b3;
 }
