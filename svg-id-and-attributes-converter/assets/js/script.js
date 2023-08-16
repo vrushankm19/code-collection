@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    // iziToast.show({
+    //     title: 'Hey',
+    //     message: 'What would you like to add?'
+    // });
+    
+
     // Rest of your existing code
 
     $("#resetButton").click(function () {
@@ -30,20 +36,15 @@ $(document).ready(function () {
             $(element).attr("id", newId);
         });
 
-        var clipPathElements = $(svgDoc).find("[clip-path]");
-        clipPathElements.each(function (index, element) {
-            var oldClipPathValue = $(element).attr("clip-path");
-            // Modify clip-path attribute value
-            var newClipPathValue = oldClipPathValue.replace(/url\(#clip-path(-\d*)?\)/g, "url(#" + newText + "clip-path$1)");
-            $(element).attr("clip-path", newClipPathValue);
-        });
+        var attributesToModify = ["fill", "clip-path", "filter"]; // Add more attributes as needed
 
-        var fillElements = $(svgDoc).find("[fill^='url(#linear-gradient']");
-        fillElements.each(function (index, element) {
-            var oldFillValue = $(element).attr("fill");
-            // Modify fill attribute value
-            var newFillValue = oldFillValue.replace(/url\(#linear-gradient(-\d*)?\)/g, "url(#" + newText + "linear-gradient$1)");
-            $(element).attr("fill", newFillValue);
+        attributesToModify.forEach(function (attrName) {
+            var attrElements = $(svgDoc).find("[" + attrName + "^='url(#']");
+            attrElements.each(function (index, element) {
+                var oldAttrValue = $(element).attr(attrName);
+                var newAttrValue = oldAttrValue.replace(/url\(#(.+?)\)/g, "url(#" + newText + "$1)");
+                $(element).attr(attrName, newAttrValue);
+            });
         });
 
         return svgDoc.documentElement.outerHTML;
@@ -53,6 +54,12 @@ $(document).ready(function () {
         var copyText = $(elementSelector)[0];
         copyText.select();
         document.execCommand("copy");
-        alert("Copied the text: " + copyText.value);
+        // alert("Copied the text: " + copyText.value);
+        iziToast.success({
+            title: 'Success',
+            message: 'Copy Output successfully!',
+            position: 'topRight', // You can change the position of the toast
+            timeout: 3000, // Toast will auto-hide after 3 seconds
+        });
     }
 });
