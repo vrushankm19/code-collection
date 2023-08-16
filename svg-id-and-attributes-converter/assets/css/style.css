@@ -44,7 +44,7 @@ label {
 textarea,
 input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 13px;
     /* margin: 5px 0; */
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -59,10 +59,18 @@ button {
     padding: 13px 20px;
     border-radius: 3px;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 button:hover {
     background-color: #1a31b3;
+}
+
+button i.material-icons{
+    font-size: 20px;
 }
 
 #output {
@@ -113,4 +121,12 @@ button:hover {
 }
 .reset-button:hover {
     background-color: #b30f0f;
+}
+.download-button {
+    background-color: #1fbb1f;
+    margin-left: 15px;
+}
+
+.download-button:hover {
+    background-color: #1a991a;
 }

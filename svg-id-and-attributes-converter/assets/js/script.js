@@ -77,4 +77,37 @@ $(document).ready(function () {
             timeout: 3000, // Toast will auto-hide after 3 seconds
         });
     }
+
+    $("#downloadButton").click(function () {
+        // Show the popup to input file name
+        var fileName = prompt("Enter File Name Only:");
+        if (fileName) {
+            downloadSvgFile(fileName);
+        }
+    });
+
+    function downloadSvgFile(fileName) {
+        var svgContent = $("#output").val();
+        var blob = new Blob([svgContent], { type: "image/svg+xml" });
+        var url = URL.createObjectURL(blob);
+
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = fileName + ".svg";
+        document.body.appendChild(a);
+        a.click();
+
+        // Cleanup
+        setTimeout(function () {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            iziToast.success({
+                title: 'Success',
+                close: false,
+                message: 'SVG Download successfully!',
+                position: 'topRight', // You can change the position of the toast
+                timeout: 3000, // Toast will auto-hide after 3 seconds
+            });
+        }, 0);
+    }
 });
