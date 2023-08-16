@@ -12,6 +12,12 @@ $(document).ready(function () {
         $("#svgInput").val(""); // Clear SVG input
         $("#newText").val(""); // Clear new text input
         $("#output").val(""); // Clear output textarea
+        iziToast.info({
+            title: 'Info',
+            message: 'Reset successfully!',
+            position: 'topRight', // You can change the position of the toast
+            timeout: 3000, // Toast will auto-hide after 3 seconds
+        });
     });
 
     $("#convertButton").click(function () {
@@ -19,6 +25,12 @@ $(document).ready(function () {
         var newText = $("#newText").val();
         var outputSvg = convertSvgIdsAndAttributes(inputSvg, newText);
         $("#output").val(outputSvg);
+        iziToast.success({
+            title: 'Success',
+            message: 'Reset successfully!',
+            position: 'topRight', // You can change the position of the toast
+            timeout: 3000, // Toast will auto-hide after 3 seconds
+        });
     });
 
     $("#copyButton").click(function () {
