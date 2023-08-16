@@ -15,6 +15,7 @@ $(document).ready(function () {
         $("#svgInput").val(""); // Clear SVG input
         $("#newText").val(""); // Clear new text input
         $("#output").val(""); // Clear output textarea
+        $("#svgInput").focus();
         iziToast.info({
             title: 'Info',
             close: false,
