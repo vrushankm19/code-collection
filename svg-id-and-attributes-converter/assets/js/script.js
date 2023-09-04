@@ -34,7 +34,7 @@ $(document).ready(function () {
         iziToast.success({
             title: 'Success',
             close: false,
-            message: 'Reset successfully!',
+            message: 'Convert SVG IDs & Attributes successfully!',
             position: 'topRight', // You can change the position of the toast
             timeout: 3000, // Toast will auto-hide after 3 seconds
         });
